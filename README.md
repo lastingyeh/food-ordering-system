@@ -1,22 +1,22 @@
 # Domain Driven Design (DDD)
 
-## Services design
+### Services design
 
-### Order Service
+- Order Service
 
-### Payment Service
+- Payment Service
 
-### Restaurant Service
+- Restaurant Service
 
-### Customer Service
+- Customer Service
 
-## Technical architecture
+### Technical architecture
 
-### Spring boot (3.4.1)
+- Spring boot (3.4.1)
 
-### Kafka
+- Kafka
 
-### Kubernetes (GKE)
+- Kubernetes (GKE)
 
 ### References
 
