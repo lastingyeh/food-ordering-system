@@ -1,0 +1,73 @@
+@startuml@startuml
+package "food-ordering-system" {
+    package "common" {
+        package "common-application" {
+            class ApplicationException {
+                +String message
+                +Throwable cause
+            }
+        }
+    }
+
+    package "order-service" {
+        package "order-application" {
+            class OrderApplicationException {
+                +String message
+                +Throwable cause
+            }
+            class OrderNotFoundException {
+                +String message
+                +Throwable cause
+            }
+        }
+
+        package "order-domain" {
+            class OrderDomainException {
+                +String message
+                +Throwable cause
+            }
+        }
+    }
+}
+
+ApplicationException <|-- OrderApplicationException
+ApplicationException <|-- OrderNotFoundException
+ApplicationException <|-- OrderDomainException
+
+@enduml
+package "food-ordering-system" {
+    package "common" {
+        package "common-application" {
+            class ApplicationException {
+                +String message
+                +Throwable cause
+            }
+        }
+    }
+
+    package "order-service" {
+        package "order-application" {
+            class OrderApplicationException {
+                +String message
+                +Throwable cause
+            }
+            class OrderNotFoundException {
+                +String message
+                +Throwable cause
+            }
+        }
+
+        package "order-domain" {
+            class OrderDomainException {
+                +String message
+                +Throwable cause
+            }
+        }
+    }
+}
+
+ApplicationException <|-- OrderApplicationException
+ApplicationException <|-- OrderNotFoundException
+ApplicationException <|-- OrderDomainException
+
+@enduml
