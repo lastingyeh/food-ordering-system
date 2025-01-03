@@ -5,18 +5,17 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.food.ordering.system</groupId>
-        <artifactId>food-ordering-system</artifactId>
+        <artifactId>payment-domain</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>payment-service</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>payment-domain</module>
-        <module>payment-messaging</module>
-        <module>payment-dataaccess</module>
-        <module>payment-container</module>
-    </modules>
+    <artifactId>payment-domain-core</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.food.ordering.system</groupId>
+            <artifactId>common-domain</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>

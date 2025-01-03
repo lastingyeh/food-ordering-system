@@ -2,11 +2,15 @@ package com.food.ordering.system.customer.service.domain.event;
 
 import com.food.ordering.system.customer.service.domain.entity.Customer;
 import com.food.ordering.system.domain.event.DomainEvent;
+import lombok.Getter;
 
 import java.time.ZonedDateTime;
 
+
+@Getter
 public class CustomerCreatedEvent implements DomainEvent<Customer> {
 
+    @Getter
     private final Customer customer;
 
     private final ZonedDateTime createdAt;
@@ -16,7 +20,8 @@ public class CustomerCreatedEvent implements DomainEvent<Customer> {
         this.createdAt = createdAt;
     }
 
-    public Customer getCustomer() {
-        return customer;
+    @Override
+    public void fire() {
+
     }
 }

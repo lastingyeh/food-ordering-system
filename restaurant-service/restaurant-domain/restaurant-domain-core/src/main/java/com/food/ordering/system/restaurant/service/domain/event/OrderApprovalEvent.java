@@ -3,10 +3,12 @@ package com.food.ordering.system.restaurant.service.domain.event;
 import com.food.ordering.system.domain.event.DomainEvent;
 import com.food.ordering.system.domain.valueobject.RestaurantId;
 import com.food.ordering.system.restaurant.service.domain.entity.OrderApproval;
+import lombok.Getter;
 
 import java.time.ZonedDateTime;
 import java.util.List;
 
+@Getter
 public abstract class OrderApprovalEvent implements DomainEvent<OrderApproval> {
     private final OrderApproval orderApproval;
     private final RestaurantId restaurantId;
@@ -23,19 +25,4 @@ public abstract class OrderApprovalEvent implements DomainEvent<OrderApproval> {
         this.createdAt = createdAt;
     }
 
-    public OrderApproval getOrderApproval() {
-        return orderApproval;
-    }
-
-    public RestaurantId getRestaurantId() {
-        return restaurantId;
-    }
-
-    public List<String> getFailureMessages() {
-        return failureMessages;
-    }
-
-    public ZonedDateTime getCreatedAt() {
-        return createdAt;
-    }
 }
