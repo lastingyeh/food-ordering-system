@@ -1,0 +1,130 @@
+@startuml
+package order-domain-core {
+
+    interface OrderDomainService {
+        + validateAndInitiateOrder(Order, Restaurant) : OrderCreatedEvent
+        + payOrder(Order) : OrderPaidEvent
+        + approveOrder(Order)
+        + cancelOrderPayment(Order, List<String>) : OrderCancelledEvent
+        + cancelOrder(Order, List<String>)
+    }
+
+    class OrderDomainServiceImpl {
+        - validateRestaurant(Restaurant)
+        - setOrderProductInformation(Order, Restaurant)
+        + validateAndInitiateOrder(Order, Restaurant) : OrderCreatedEvent
+        + payOrder(Order) : OrderPaidEvent
+        + approveOrder(Order)
+        + cancelOrderPayment(Order, List<String>) : OrderCancelledEvent
+        + cancelOrder(Order, List<String>)
+    }
+
+    class Order {
+        - CustomerId customerId
+        - RestaurantId restaurantId
+        - StreetAddress deliveryAddress
+        - Money price
+        - List<OrderItem> items
+        - TrackingId trackingId
+        - OrderStatus orderStatus
+        - List<String> failureMessages
+        + validateOrder()
+        + initializeOrder()
+        + pay()
+        + approve()
+        + initCancel(List<String>)
+        + cancel(List<String>)
+        + getCustomerId() : CustomerId
+        + getRestaurantId() : RestaurantId
+        + getDeliveryAddress() : StreetAddress
+        + getPrice() : Money
+        + getItems() : List<OrderItem>
+        + getTrackingId() : TrackingId
+        + getOrderStatus() : OrderStatus
+        + getFailureMessages() : List<String>
+    }
+
+    class OrderItem {
+        - OrderId orderId
+        - Product product
+        - int quantity
+        - Money price
+        - Money subTotal
+        + isPriceValid() : boolean
+        + initializeOrderItem(OrderId, OrderItemId)
+        + getOrderId() : OrderId
+        + getProduct() : Product
+        + getQuantity() : int
+        + getPrice() : Money
+        + getSubTotal() : Money
+    }
+
+    class Product {
+        - String name
+        - Money price
+        + updateWithConfirmedNameAndPrice(String, Money)
+        + getName() : String
+        + getPrice() : Money
+    }
+
+    class Restaurant {
+        - List<Product> products
+        - boolean active
+        + getProducts() : List<Product>
+        + isActive() : boolean
+    }
+
+    class Customer {
+        - String username
+        - String firstName
+        - String lastName
+        + getUsername() : String
+        + getFirstName() : String
+        + getLastName() : String
+    }
+
+    abstract class OrderEvent {
+        - Order order
+        - ZonedDateTime createdAt
+        + getOrder() : Order
+        + getCreatedAt() : ZonedDateTime
+    }
+
+    class OrderCreatedEvent extends OrderEvent {
+    }
+
+    class OrderPaidEvent extends OrderEvent {
+    }
+
+    class OrderCancelledEvent extends OrderEvent {
+    }
+}
+
+package "common-domain" {
+    interface DomainEvent {
+        - ZonedDateTime createdAt
+        + ZonedDateTime getCreatedAt()
+    }
+
+    interface DomainEventPublisher<T extends DomainEvent> {
+        + void publish(T event)
+    }
+}
+
+
+
+OrderDomainService <|.. OrderDomainServiceImpl
+OrderDomainServiceImpl --> Order
+OrderDomainServiceImpl --> Restaurant
+OrderDomainServiceImpl --> OrderCreatedEvent
+OrderDomainServiceImpl --> OrderPaidEvent
+OrderDomainServiceImpl --> OrderCancelledEvent
+Order --> OrderItem
+Order --> Customer
+Order --> Restaurant
+OrderItem --> Product
+DomainEvent <|.. OrderEvent
+' OrderEvent <|-- OrderCreatedEvent
+' OrderEvent <|-- OrderPaidEvent
+' OrderEvent <|-- OrderCancelledEvent
+@enduml

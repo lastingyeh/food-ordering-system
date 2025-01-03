@@ -1,0 +1,101 @@
+@startuml
+package "ports.input.service" {
+    interface OrderApplicationService {
+        + createOrder(CreateOrderCommand) : CreateOrderResponse
+        + trackOrder(TrackOrderQuery) : TrackOrderResponse
+    }
+}
+
+package "domain" {
+    class OrderApplicationServiceImpl {
+        - OrderCreateCommandHandler orderCreateCommandHandler
+        - OrderTrackCommandHandler orderTrackCommandHandler
+        + createOrder(CreateOrderCommand) : CreateOrderResponse
+        + trackOrder(TrackOrderQuery) : TrackOrderResponse
+    }
+}
+
+package "create" {
+    class OrderCreateCommandHandler {
+        - OrderCreateHelper orderCreateHelper
+        - OrderDataMapper orderDataMapper
+        - OrderCreatedPaymentRequestMessagePublisher orderCreatedPaymentRequestMessagePublisher
+        + createOrder(CreateOrderCommand) : CreateOrderResponse
+    }
+}
+
+package "track" {
+    class OrderTrackCommandHandler {
+        - OrderRepository orderRepository
+        - OrderDataMapper orderDataMapper
+        + trackOrder(TrackOrderQuery) : TrackOrderResponse
+    }
+}
+
+package "helper" {
+    class OrderCreateHelper {
+        - OrderDomainService orderDomainService
+        - OrderRepository orderRepository
+        - CustomerRepository customerRepository
+        - RestaurantRepository restaurantRepository
+        - OrderDataMapper orderDataMapper
+        + persistOrder(CreateOrderCommand) : OrderCreatedEvent
+    }
+}
+
+package "mapper" {
+    class OrderDataMapper {
+        + createOrderCommandToRestaurant(CreateOrderCommand) : Restaurant
+        + createOrderCommandToOrder(CreateOrderCommand) : Order
+        + orderToCreateOrderResponse(Order, String) : CreateOrderResponse
+        + orderToTrackOrderResponse(Order) : TrackOrderResponse
+    }
+}
+
+package "ports.output.message.publisher.payment" {
+    class OrderCancelledPaymentRequestMessagePublisher {
+        + publish(OrderCreatedEvent)
+    }
+
+     class OrderCreatedPaymentRequestMessagePublisher {
+        + publish(OrderCreatedEvent)
+    }
+}
+
+package "ports.output.message.publisher.restaurantapproval" {
+    class OrderPaidRestaurantRequestMessagePublisher {
+        + publish(OrderCreatedEvent)
+    }
+}
+
+package "ports.output.repository" {
+    interface CustomerRepository {
+        + findByCustomerId(String) : Customer
+        + save(Customer) : Customer
+    }
+
+    interface OrderRepository {
+        + save(Order) : Order
+        + findByOrderId(String) : Order
+    }
+
+    interface RestaurantRepository {
+        + findByRestaurantId(String) : Restaurant
+        + save(Restaurant) : Restaurant
+    }
+}
+
+OrderApplicationService <|.. OrderApplicationServiceImpl
+OrderApplicationServiceImpl --> OrderCreateCommandHandler
+OrderApplicationServiceImpl --> OrderTrackCommandHandler
+OrderCreateCommandHandler --> OrderCreateHelper
+OrderCreateCommandHandler --> OrderDataMapper
+OrderCreateCommandHandler --> OrderCreatedPaymentRequestMessagePublisher
+OrderTrackCommandHandler --> OrderRepository
+OrderTrackCommandHandler --> OrderDataMapper
+OrderCreateHelper --> OrderDomainService
+OrderCreateHelper --> OrderRepository
+OrderCreateHelper --> CustomerRepository
+OrderCreateHelper --> RestaurantRepository
+OrderCreateHelper --> OrderDataMapper
+@enduml

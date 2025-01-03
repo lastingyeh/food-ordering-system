@@ -1,0 +1,32 @@
+@startuml common-domain-diagram
+
+package "common-domain" {
+    class BaseEntity<ID> {
+        - ID id
+        + ID getId()
+        + void setId(ID id)
+        + boolean equals(Object obj)
+        + int hashCode()
+    }
+
+    class AggregateRoot<ID> {
+        + <<extends>> BaseEntity<ID>
+    }
+
+    class DomainEvent {
+        - ZonedDateTime createdAt
+        + ZonedDateTime getCreatedAt()
+    }
+
+    class DomainEventPublisher<T extends DomainEvent> {
+        + void publish(T event)
+    }
+
+    class DomainConstants {
+        {static} + String UTC
+    }
+
+    BaseEntity <|-- AggregateRoot
+}
+
+@enduml
