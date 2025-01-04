@@ -2,7 +2,9 @@ package com.food.ordering.system.order.service.domain.entity;
 
 import com.food.ordering.system.domain.entity.AggregateRoot;
 import com.food.ordering.system.domain.valueobject.CustomerId;
+import lombok.Getter;
 
+@Getter
 public class Customer extends AggregateRoot<CustomerId> {
 
     private String username;
@@ -20,15 +22,4 @@ public class Customer extends AggregateRoot<CustomerId> {
         super.setId(customerId);
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
 }
