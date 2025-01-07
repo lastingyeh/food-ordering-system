@@ -4,7 +4,9 @@ import com.food.ordering.system.domain.entity.BaseEntity;
 import com.food.ordering.system.domain.valueobject.Money;
 import com.food.ordering.system.domain.valueobject.OrderId;
 import com.food.ordering.system.order.service.domain.valueobject.OrderItemId;
+import lombok.Getter;
 
+@Getter
 public class OrderItem extends BaseEntity<OrderItemId> {
     private OrderId orderId;
     private final Product product;
@@ -35,26 +37,6 @@ public class OrderItem extends BaseEntity<OrderItemId> {
         return new Builder();
     }
 
-
-    public OrderId getOrderId() {
-        return orderId;
-    }
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public Money getPrice() {
-        return price;
-    }
-
-    public Money getSubTotal() {
-        return subTotal;
-    }
 
     public static final class Builder {
         private OrderItemId orderItemId;

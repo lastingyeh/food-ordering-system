@@ -2,9 +2,11 @@ package com.food.ordering.system.order.service.domain.entity;
 
 import com.food.ordering.system.domain.entity.AggregateRoot;
 import com.food.ordering.system.domain.valueobject.RestaurantId;
+import lombok.Getter;
 
 import java.util.List;
 
+@Getter
 public class Restaurant extends AggregateRoot<RestaurantId> {
     private final List<Product> products;
     private boolean active;
@@ -19,21 +21,12 @@ public class Restaurant extends AggregateRoot<RestaurantId> {
         return new Builder();
     }
 
-    public List<Product> getProducts() {
-        return products;
-    }
-
-    public boolean isActive() {
-        return active;
-    }
-
     public static final class Builder {
         private RestaurantId restaurantId;
         private List<Product> products;
         private boolean active;
 
-        private Builder() {
-        }
+        private Builder() {}
 
         public Builder restaurantId(RestaurantId val) {
             restaurantId = val;

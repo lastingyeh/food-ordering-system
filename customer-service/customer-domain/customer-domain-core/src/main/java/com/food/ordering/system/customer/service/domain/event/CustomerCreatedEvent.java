@@ -19,9 +19,4 @@ public class CustomerCreatedEvent implements DomainEvent<Customer> {
         this.customer = customer;
         this.createdAt = createdAt;
     }
-
-    @Override
-    public void fire() {
-
-    }
 }

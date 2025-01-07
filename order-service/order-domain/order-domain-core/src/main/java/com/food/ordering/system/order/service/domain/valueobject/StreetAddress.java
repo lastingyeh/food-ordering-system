@@ -1,8 +1,11 @@
 package com.food.ordering.system.order.service.domain.valueobject;
 
+import lombok.Getter;
+
 import java.util.Objects;
 import java.util.UUID;
 
+@Getter
 public class StreetAddress {
     private final UUID id;
     private final String street;
@@ -14,22 +17,6 @@ public class StreetAddress {
         this.street = street;
         this.postalCode = postalCode;
         this.city = city;
-    }
-
-    public UUID getId() {
-        return id;
-    }
-
-    public String getStreet() {
-        return street;
-    }
-
-    public String getPostalCode() {
-        return postalCode;
-    }
-
-    public String getCity() {
-        return city;
     }
 
     @Override
