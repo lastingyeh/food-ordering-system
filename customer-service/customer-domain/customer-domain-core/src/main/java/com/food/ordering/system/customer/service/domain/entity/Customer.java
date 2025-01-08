@@ -16,7 +16,6 @@ public class Customer extends AggregateRoot<CustomerId> {
         this.firstName = firstName;
         this.lastName = lastName;
     }
-
 }
 
 

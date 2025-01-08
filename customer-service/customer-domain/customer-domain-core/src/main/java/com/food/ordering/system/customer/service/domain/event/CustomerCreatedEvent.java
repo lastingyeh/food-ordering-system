@@ -6,11 +6,9 @@ import lombok.Getter;
 
 import java.time.ZonedDateTime;
 
-
 @Getter
 public class CustomerCreatedEvent implements DomainEvent<Customer> {
 
-    @Getter
     private final Customer customer;
 
     private final ZonedDateTime createdAt;
@@ -19,4 +17,5 @@ public class CustomerCreatedEvent implements DomainEvent<Customer> {
         this.customer = customer;
         this.createdAt = createdAt;
     }
+
 }

@@ -11,10 +11,6 @@
 
     <artifactId>customer-domain-core</artifactId>
 
-    <properties>
-
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>com.food.ordering.system</groupId>

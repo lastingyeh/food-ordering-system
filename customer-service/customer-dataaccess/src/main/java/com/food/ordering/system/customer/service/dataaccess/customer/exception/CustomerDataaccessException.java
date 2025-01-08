@@ -1,4 +1,4 @@
-package com.food.ordering.system.customer.service.domain.dataaccess.customer.exception;
+package com.food.ordering.system.customer.service.dataaccess.customer.exception;
 
 public class CustomerDataaccessException extends RuntimeException {
 

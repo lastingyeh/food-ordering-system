@@ -1,4 +1,4 @@
-package com.food.ordering.system.customer.service.domain;
+package com.food.ordering.system.customer.service;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

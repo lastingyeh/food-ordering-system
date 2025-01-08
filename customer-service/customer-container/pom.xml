@@ -11,10 +11,6 @@
 
     <artifactId>customer-container</artifactId>
 
-    <properties>
-
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
