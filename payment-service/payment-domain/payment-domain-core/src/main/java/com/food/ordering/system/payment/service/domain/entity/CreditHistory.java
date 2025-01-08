@@ -5,7 +5,9 @@ import com.food.ordering.system.domain.valueobject.CustomerId;
 import com.food.ordering.system.domain.valueobject.Money;
 import com.food.ordering.system.payment.service.domain.valueobject.CreditHistoryId;
 import com.food.ordering.system.payment.service.domain.valueobject.TransactionType;
+import lombok.Getter;
 
+@Getter
 public class CreditHistory extends BaseEntity<CreditHistoryId> {
 
     private final CustomerId customerId;
@@ -23,18 +25,6 @@ public class CreditHistory extends BaseEntity<CreditHistoryId> {
         return new Builder();
     }
 
-
-    public CustomerId getCustomerId() {
-        return customerId;
-    }
-
-    public Money getAmount() {
-        return amount;
-    }
-
-    public TransactionType getTransactionType() {
-        return transactionType;
-    }
 
     public static final class Builder {
         private CreditHistoryId creditHistoryId;

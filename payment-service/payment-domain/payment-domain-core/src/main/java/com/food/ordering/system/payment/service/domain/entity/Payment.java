@@ -6,12 +6,14 @@ import com.food.ordering.system.domain.valueobject.Money;
 import com.food.ordering.system.domain.valueobject.OrderId;
 import com.food.ordering.system.domain.valueobject.PaymentStatus;
 import com.food.ordering.system.payment.service.domain.valueobject.PaymentId;
+import lombok.Getter;
 
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.UUID;
 
+@Getter
 public class Payment extends AggregateRoot<PaymentId> {
 
     private final OrderId orderId;
@@ -49,26 +51,6 @@ public class Payment extends AggregateRoot<PaymentId> {
         return new Builder();
     }
 
-
-    public OrderId getOrderId() {
-        return orderId;
-    }
-
-    public CustomerId getCustomerId() {
-        return customerId;
-    }
-
-    public Money getPrice() {
-        return price;
-    }
-
-    public PaymentStatus getPaymentStatus() {
-        return paymentStatus;
-    }
-
-    public ZonedDateTime getCreatedAt() {
-        return createdAt;
-    }
 
     public static final class Builder {
         private PaymentId paymentId;

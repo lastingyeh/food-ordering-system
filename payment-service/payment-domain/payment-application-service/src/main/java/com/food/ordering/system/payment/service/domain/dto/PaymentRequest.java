@@ -4,6 +4,7 @@ import com.food.ordering.system.domain.valueobject.PaymentOrderStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.Instant;
@@ -18,9 +19,6 @@ public class PaymentRequest {
     private String customerId;
     private BigDecimal price;
     private Instant createdAt;
+    @Setter
     private PaymentOrderStatus paymentOrderStatus;
-
-    public void setPaymentOrderStatus(PaymentOrderStatus paymentOrderStatus) {
-        this.paymentOrderStatus = paymentOrderStatus;
-    }
 }

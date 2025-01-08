@@ -4,7 +4,9 @@ import com.food.ordering.system.domain.entity.BaseEntity;
 import com.food.ordering.system.domain.valueobject.CustomerId;
 import com.food.ordering.system.domain.valueobject.Money;
 import com.food.ordering.system.payment.service.domain.valueobject.CreditEntryId;
+import lombok.Getter;
 
+@Getter
 public class CreditEntry extends BaseEntity<CreditEntryId> {
 
     private final CustomerId customerId;
@@ -28,14 +30,6 @@ public class CreditEntry extends BaseEntity<CreditEntryId> {
         return new Builder();
     }
 
-
-    public CustomerId getCustomerId() {
-        return customerId;
-    }
-
-    public Money getTotalCreditAmount() {
-        return totalCreditAmount;
-    }
 
     public static final class Builder {
         private CreditEntryId creditEntryId;
