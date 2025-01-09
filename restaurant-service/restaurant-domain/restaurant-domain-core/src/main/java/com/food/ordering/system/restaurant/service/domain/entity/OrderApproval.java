@@ -5,7 +5,9 @@ import com.food.ordering.system.domain.valueobject.OrderApprovalStatus;
 import com.food.ordering.system.domain.valueobject.OrderId;
 import com.food.ordering.system.domain.valueobject.RestaurantId;
 import com.food.ordering.system.restaurant.service.domain.valueobject.OrderApprovalId;
+import lombok.Getter;
 
+@Getter
 public class OrderApproval extends BaseEntity<OrderApprovalId> {
     private final RestaurantId restaurantId;
     private final OrderId orderId;
@@ -22,18 +24,6 @@ public class OrderApproval extends BaseEntity<OrderApprovalId> {
         return new Builder();
     }
 
-
-    public RestaurantId getRestaurantId() {
-        return restaurantId;
-    }
-
-    public OrderId getOrderId() {
-        return orderId;
-    }
-
-    public OrderApprovalStatus getApprovalStatus() {
-        return approvalStatus;
-    }
 
     public static final class Builder {
         private OrderApprovalId orderApprovalId;

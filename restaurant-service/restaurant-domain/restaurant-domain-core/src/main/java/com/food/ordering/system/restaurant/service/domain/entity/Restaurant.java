@@ -6,12 +6,16 @@ import com.food.ordering.system.domain.valueobject.OrderApprovalStatus;
 import com.food.ordering.system.domain.valueobject.OrderStatus;
 import com.food.ordering.system.domain.valueobject.RestaurantId;
 import com.food.ordering.system.restaurant.service.domain.valueobject.OrderApprovalId;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 import java.util.UUID;
 
+@Getter
 public class Restaurant extends AggregateRoot<RestaurantId> {
    private OrderApproval orderApproval;
+   @Setter
    private boolean active;
    private final OrderDetail orderDetail;
 
@@ -41,10 +45,6 @@ public class Restaurant extends AggregateRoot<RestaurantId> {
                .build();
    }
 
-    public void setActive(boolean active) {
-        this.active = active;
-    }
-
     private Restaurant(Builder builder) {
         setId(builder.restaurantId);
         orderApproval = builder.orderApproval;
@@ -54,18 +54,6 @@ public class Restaurant extends AggregateRoot<RestaurantId> {
 
     public static Builder builder() {
         return new Builder();
-    }
-
-    public OrderApproval getOrderApproval() {
-        return orderApproval;
-    }
-
-    public boolean isActive() {
-        return active;
-    }
-
-    public OrderDetail getOrderDetail() {
-        return orderDetail;
     }
 
     public static final class Builder {

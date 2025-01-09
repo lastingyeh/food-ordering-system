@@ -3,7 +3,9 @@ package com.food.ordering.system.restaurant.service.domain.entity;
 import com.food.ordering.system.domain.entity.BaseEntity;
 import com.food.ordering.system.domain.valueobject.Money;
 import com.food.ordering.system.domain.valueobject.ProductId;
+import lombok.Getter;
 
+@Getter
 public class Product extends BaseEntity<ProductId> {
     private String name;
     private Money price;
@@ -26,22 +28,6 @@ public class Product extends BaseEntity<ProductId> {
 
     public static Builder builder() {
         return new Builder();
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public Money getPrice() {
-        return price;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public boolean isAvailable() {
-        return available;
     }
 
     public static final class Builder {

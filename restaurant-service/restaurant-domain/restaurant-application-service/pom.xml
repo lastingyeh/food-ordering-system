@@ -13,6 +13,14 @@
     <dependencies>
         <dependency>
             <groupId>com.food.ordering.system</groupId>
+            <artifactId>outbox</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.food.ordering.system</groupId>
+            <artifactId>saga</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.food.ordering.system</groupId>
             <artifactId>restaurant-domain-core</artifactId>
         </dependency>
         <dependency>
