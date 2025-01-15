@@ -1,0 +1,101 @@
+@startuml
+
+package order.service.domain {
+    interface OrderDomainService {
+        + OrderCreatedEvent validateAndInitiateOrder(Order order, Restaurant restaurant)
+        + OrderPaidEvent payOrder(Order order)
+        + void approveOrder(Order order)
+        + OrderCancelledEvent cancelOrderPayment(Order order, List<String> failureMessages)
+        + void cancelOrder(Order order, List<String> failureMessages)
+    }
+
+    class OrderDomainServiceImpl {
+        + OrderCreatedEvent validateAndInitiateOrder(Order order, Restaurant restaurant)
+        + OrderPaidEvent payOrder(Order order)
+        + void approveOrder(Order order)
+        + OrderCancelledEvent cancelOrderPayment(Order order, List<String> failureMessages)
+        + void cancelOrder(Order order, List<String> failureMessages)
+        - void validateRestaurant(Restaurant restaurant)
+        - void setOrderProductInformation(Order order, Restaurant restaurant)
+    }
+
+    class Order {
+        - String id
+        - String customerId
+        - List<OrderItem> items
+        - OrderStatus status
+        --
+        + void validateOrder()
+        + void initializeOrder()
+        + void pay()
+        + void approve()
+        + void initCancel(List<String> failureMessages)
+        + void cancel(List<String> failureMessages)
+    }
+
+    class OrderItem {
+        - String productId
+        - int quantity
+        - double price
+        --
+        + void validatePrice()
+        + void initializeOrderItem()
+    }
+
+    class Product {
+        - String id
+        - String name
+        - double price
+    }
+
+    class Restaurant {
+        - String id
+        - String name
+        - boolean active
+        --
+        + boolean isActive()
+        + void validateOrder(Order order)
+        + void constructOrderApproval(Order order)
+    }
+
+    class Customer {
+        - String id
+        - String name
+    }
+
+    class OrderCreatedEvent {
+        - Order order
+        - ZonedDateTime createdAt
+    }
+
+    class OrderPaidEvent {
+        - Order order
+        - ZonedDateTime paidAt
+    }
+
+    class OrderCancelledEvent {
+        - Order order
+        - ZonedDateTime cancelledAt
+    }
+
+    enum OrderStatus {
+        PENDING,
+        PAID,
+        APPROVED,
+        CANCELLING,
+        CANCELLED
+    }
+}
+
+OrderDomainServiceImpl --> OrderDomainService
+OrderDomainServiceImpl --> Order
+OrderDomainServiceImpl --> Restaurant
+Order --> OrderItem
+Order --> OrderStatus
+OrderItem --> Product
+Restaurant --> Order
+OrderCreatedEvent --> Order
+OrderPaidEvent --> Order
+OrderCancelledEvent --> Order
+
+@enduml

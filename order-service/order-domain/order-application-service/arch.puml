@@ -1,0 +1,51 @@
+@startuml
+!define OrderApplicationServiceImpl OrderApplicationServiceImpl
+!define OrderCreateCommandHandler create.OrderCreateCommandHandler
+!define OrderTrackCommandHandler track.OrderTrackCommandHandler
+!define OrderCreateHelper OrderCreateHelper
+!define OrderDataMapper mapper.OrderDataMapper
+!define OrderCreatedPaymentRequestMessagePublisher ports.output.message.publisher.payment.OrderCreatedPaymentRequestMessagePublisher
+!define OrderRepository ports.output.repository.OrderRepository
+!define CustomerRepository ports.output.repository.CustomerRepository
+!define RestaurantRepository ports.output.repository.RestaurantRepository
+!define OrderDomainService OrderDomainService
+
+class OrderApplicationServiceImpl {
+    - OrderCreateCommandHandler orderCreateCommandHandler
+    - OrderTrackCommandHandler orderTrackCommandHandler
+    + createOrder(CreateOrderCommand): CreateOrderResponse
+    + trackOrder(TrackOrderQuery): TrackOrderResponse
+}
+
+class OrderCreateCommandHandler {
+    - OrderCreateHelper orderCreateHelper
+    - OrderDataMapper orderDataMapper
+    - OrderCreatedPaymentRequestMessagePublisher orderCreatedPaymentRequestMessagePublisher
+    + createOrder(CreateOrderCommand): CreateOrderResponse
+}
+
+class OrderTrackCommandHandler {
+    + trackOrder(TrackOrderQuery): TrackOrderResponse
+}
+
+class OrderCreateHelper {
+    - OrderDomainService orderDomainService
+    - OrderRepository orderRepository
+    - CustomerRepository customerRepository
+    - RestaurantRepository restaurantRepository
+    - OrderDataMapper orderDataMapper
+    + persistOrder(CreateOrderCommand): OrderCreatedEvent
+}
+
+OrderApplicationServiceImpl --> OrderCreateCommandHandler
+OrderApplicationServiceImpl --> OrderTrackCommandHandler
+OrderCreateCommandHandler --> OrderCreateHelper
+OrderCreateCommandHandler --> OrderDataMapper
+OrderCreateCommandHandler --> OrderCreatedPaymentRequestMessagePublisher
+OrderCreateHelper --> OrderDomainService
+OrderCreateHelper --> OrderRepository
+OrderCreateHelper --> CustomerRepository
+OrderCreateHelper --> RestaurantRepository
+OrderCreateHelper --> OrderDataMapper
+
+@enduml

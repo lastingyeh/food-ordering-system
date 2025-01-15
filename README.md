@@ -18,6 +18,17 @@
 
 - Kubernetes (GKE)
 
+### Features
+
+- [x] saga
+- [x] outbox
+- [ ] cqrs
+- [ ] deployments (gke, k8s, manifests)
+- [ ] operations (service mesh, monitoring, log, metrics)
+- [ ] grpc (unary, streaming)
+- [ ] cdc (outbox alternative)
+- [ ] others
+
 ### References
 
 - [Microservices: Clean Architecture, DDD, SAGA, Outbox & Kafka](https://www.udemy.com/course/microservices-clean-architecture-ddd-saga-outbox-kafka-kubernetes/?couponCode=ST12MT122624)
