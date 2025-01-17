@@ -7,7 +7,7 @@ skinparam DefaultFontName Arial
 actor "User/System Action" as User
 participant "Materialized View: customer_view" as OrderCustomerMView
 participant "Table: customers" as Customers
-participant "Function: refresh_customer_view()" as RefreshFunction
+participant "Trigger: refresh_customer_view()" as RefreshFunction
 
 Customers -> OrderCustomerMView : create view
 User -> OrderCustomerMView : query view
