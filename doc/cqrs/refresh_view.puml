@@ -12,7 +12,7 @@ participant "Trigger: refresh_customer_view()" as RefreshFunction
 Customers -> OrderCustomerMView : create view
 User -> OrderCustomerMView : query view
 User -> Customers : insert/update/delete/truncate
-Customers -> RefreshFunction : db trigger refresh function
+Customers -> RefreshFunction : db trigger refresh
 RefreshFunction -> OrderCustomerMView : refresh materialized view
 
 @enduml
