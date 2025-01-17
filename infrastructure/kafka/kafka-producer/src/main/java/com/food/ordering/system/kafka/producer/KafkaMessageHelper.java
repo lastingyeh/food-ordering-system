@@ -35,7 +35,8 @@ public class KafkaMessageHelper {
             T avroModel,
             U outboxMessage,
             BiConsumer<U, OutboxStatus> outboxCallback,
-            String orderId, String avroModelName) {
+            String orderId,
+            String avroModelName) {
         return (result, ex) -> {
             if (ex == null) {
                 RecordMetadata metadata = result.getRecordMetadata();

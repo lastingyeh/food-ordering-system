@@ -1,0 +1,18 @@
+@startuml
+!define LINECOLOR #Black
+skinparam ArrowColor LINECOLOR
+skinparam SequenceArrowColor LINECOLOR
+skinparam DefaultFontName Arial
+
+actor "User/System Action" as User
+participant "Materialized View: customer_view" as OrderCustomerMView
+participant "Table: customers" as Customers
+participant "Function: refresh_customer_view()" as RefreshFunction
+
+Customers -> OrderCustomerMView : create view
+User -> OrderCustomerMView : query view
+User -> Customers : insert/update/delete/truncate
+Customers -> RefreshFunction : db trigger refresh function
+RefreshFunction -> OrderCustomerMView : refresh materialized view
+
+@enduml
