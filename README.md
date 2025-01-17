@@ -27,6 +27,7 @@
 - [ ] operations (service mesh, monitoring, log, metrics)
 - [ ] grpc (unary, streaming)
 - [ ] cdc (outbox alternative)
+- [ ] identity and access management
 - [ ] others
 
 ### References
