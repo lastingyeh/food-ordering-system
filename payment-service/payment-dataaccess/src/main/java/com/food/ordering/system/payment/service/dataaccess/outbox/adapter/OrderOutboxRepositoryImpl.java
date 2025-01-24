@@ -46,9 +46,9 @@ public class OrderOutboxRepositoryImpl implements OrderOutboxRepository {
 
     @Override
     public Optional<OrderOutboxMessage> findByTypeAndSagaIdAndPaymentStatusAndOutboxStatus(String sagaType,
-                                                                            UUID sagaId,
-                                                                            PaymentStatus paymentStatus,
-                                                                            OutboxStatus outboxStatus) {
+                                                                                           UUID sagaId,
+                                                                                           PaymentStatus paymentStatus,
+                                                                                           OutboxStatus outboxStatus) {
         return orderOutboxJpaRepository.findByTypeAndSagaIdAndPaymentStatusAndOutboxStatus(sagaType, sagaId,
                         paymentStatus, outboxStatus)
                 .map(orderOutboxDataAccessMapper::orderOutboxEntityToOrderOutboxMessage);

@@ -16,7 +16,4 @@
         <module>order-domain-core</module>
     </modules>
 
-    <properties>
-    </properties>
-
 </project>
