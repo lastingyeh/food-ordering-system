@@ -2,9 +2,9 @@ package com.food.ordering.system.order.service.domain.outbox.scheduler.payment;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.food.ordering.system.domain.event.payload.OrderPaymentEventPayload;
 import com.food.ordering.system.domain.valueobject.OrderStatus;
 import com.food.ordering.system.order.service.domain.exception.OrderDomainException;
-import com.food.ordering.system.order.service.domain.outbox.model.payment.OrderPaymentEventPayload;
 import com.food.ordering.system.order.service.domain.outbox.model.payment.OrderPaymentOutboxMessage;
 import com.food.ordering.system.order.service.domain.ports.output.repository.PaymentOutboxRepository;
 import com.food.ordering.system.outbox.OutboxStatus;
@@ -22,6 +22,7 @@ import static com.food.ordering.system.saga.order.SagaConstants.ORDER_SAGA_NAME;
 @Slf4j
 @Component
 public class PaymentOutboxHelper {
+
     private final PaymentOutboxRepository paymentOutboxRepository;
     private final ObjectMapper objectMapper;
 
@@ -90,4 +91,5 @@ public class PaymentOutboxHelper {
                     paymentEventPayload.getOrderId(), e);
         }
     }
+
 }
