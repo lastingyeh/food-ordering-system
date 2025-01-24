@@ -1,4 +1,4 @@
-package com.food.ordering.system.customer.service.messaging.kafka;
+package com.food.ordering.system.customer.service.messaging.publisher.kafka;
 
 import com.food.ordering.system.customer.service.domain.config.CustomerServiceConfigData;
 import com.food.ordering.system.customer.service.domain.event.CustomerCreatedEvent;
