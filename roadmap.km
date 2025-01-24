@@ -1,0 +1,250 @@
+{
+    "root": {
+        "data": {
+            "id": "d77nloclh2o0",
+            "created": 1737452762906,
+            "text": "Roadmap"
+        },
+        "children": [
+            {
+                "data": {
+                    "id": "d77nlqpkbkw0",
+                    "created": 1737452768044,
+                    "text": "Distributed Transaction"
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "saga2",
+                            "text": "Saga Pattern",
+                            "status": "done"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "outbox2",
+                            "text": "Outbox Pattern",
+                            "status": "done"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "eventual1",
+                            "text": "Eventual Consistency",
+                            "status": "pending"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "retry1",
+                            "text": "Retry and Dead Letter Queues",
+                            "status": "pending"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "cdc2",
+                            "text": "CDC (Change Data Capture)",
+                            "status": "pending"
+                        },
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "id": "d77nlrpkbkw1",
+                    "created": 1737452768045,
+                    "text": " Dev (DDD)"
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "context1",
+                            "text": "Context Mapping",
+                            "status": "done"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "eventstorming1",
+                            "text": "Event Storming",
+                            "status": "done"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "aggregates1",
+                            "text": "Aggregates and Entities",
+                            "status": "pending"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "cqrs2",
+                            "text": "CQRS",
+                            "status": "pending"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "testing1",
+                            "text": "Testing in DDD",
+                            "status": "pending"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "api1",
+                            "text": "Idempotent APIs",
+                            "status": "pending"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "d77ot6keulc0",
+                            "created": 1737456172220,
+                            "text": "Identity"
+                        },
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "id": "d77nlirpkbkw2",
+                    "created": 1737452768050,
+                    "text": "Infra (Cloud)",
+                    "layout_fish-bone-master_offset": {
+                        "x": -23,
+                        "y": 0
+                    }
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "gke1",
+                            "text": "GKE (Google Kubernetes Engine)",
+                            "status": "pending"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "k8s1",
+                            "text": "K8s Manifests",
+                            "status": "pending"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "network1",
+                            "text": "Network Configuration",
+                            "status": "pending"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "terraform1",
+                            "text": "Terraform for IaC",
+                            "status": "pending"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "security1",
+                            "text": "Security for IAM / Service Account",
+                            "status": "pending"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "autoscaling1",
+                            "text": "Autoscaling",
+                            "status": "pending"
+                        },
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "id": "d77nlorpkbkw3",
+                    "created": 1737452768055,
+                    "text": "Ops",
+                    "layout_fish-bone-master_offset": {
+                        "x": 60,
+                        "y": 1
+                    }
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "monitoring1",
+                            "text": "Monitoring Async Transactions",
+                            "status": "pending"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "metricsOps1",
+                            "text": "Metrics and Alerts",
+                            "status": "pending"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "loggingOps1",
+                            "text": "Async Transaction Logging",
+                            "status": "pending"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "tracingOps1",
+                            "text": "Distributed Tracing",
+                            "status": "pending"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "serviceMeshOps1",
+                            "text": "Service Mesh for Async Transactions",
+                            "status": "pending"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "ci_cd1",
+                            "text": "CI/CD Pipelines",
+                            "status": "pending"
+                        },
+                        "children": []
+                    }
+                ]
+            }
+        ]
+    },
+    "template": "filetree",
+    "theme": "classic-compact",
+    "version": "1.4.43"
+}
