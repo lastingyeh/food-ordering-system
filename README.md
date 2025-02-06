@@ -22,13 +22,13 @@
 
 - [x] saga
 - [x] outbox
-- [ ] cqrs
+- [x] cqrs
 - [ ] deployments (gke, k8s, manifests)
 - [ ] operations (service mesh, monitoring, log, metrics)
 - [ ] grpc (unary, streaming)
-- [ ] cdc (outbox alternative)
+- [x] cdc (outbox alternative)
 - [ ] identity and access management
-- [ ] others
+- [ ] test (junit, mockito, testcontainers, use spring cloud contract)
 
 ### References
 
