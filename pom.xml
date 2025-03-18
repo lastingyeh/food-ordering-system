@@ -32,6 +32,8 @@
         <spring-kafka.version>3.3.1</spring-kafka.version>
         <kafka-avro-serializer.version>7.8.0</kafka-avro-serializer.version>
         <avro.version>1.12.0</avro.version>
+        <spring-cloud-contract.version>4.2.0</spring-cloud-contract.version>
+        <jupiter.version>5.10.2</jupiter.version>
     </properties>
 
     <dependencyManagement>
@@ -189,6 +191,19 @@
                 <version>${project.version}</version>
             </dependency>
 
+            <!--            -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-contract-wiremock</artifactId>
+                <version>${spring-cloud-contract.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-contract-stub-runner</artifactId>
+                <version>${spring-cloud-contract.version}</version>
+                <scope>test</scope>
+            </dependency>
         </dependencies>
 
     </dependencyManagement>
@@ -214,6 +229,12 @@
                 <configuration>
                     <release>17</release>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-contract-maven-plugin</artifactId>
+                <version>${spring-cloud-contract.version}</version>
+                <extensions>true</extensions>
             </plugin>
         </plugins>
     </build>
