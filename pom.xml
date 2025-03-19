@@ -234,6 +234,9 @@
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-contract-maven-plugin</artifactId>
                 <version>${spring-cloud-contract.version}</version>
+                <configuration>
+                    <failOnNoContracts>false</failOnNoContracts>
+                </configuration>
                 <extensions>true</extensions>
             </plugin>
         </plugins>
